@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ad-Filled Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+      header,
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+      }
+      .ad {
+        border: 1px solid #ddd;
+        margin: 10px 0;
+        text-align: center;
+        background-color: #f4f4f4;
+        padding: 10px;
+        font-size: 16px;
+        color: #666;
+      }
+      .content {
+        margin: 20px 0;
+      }
+      .sidebar {
+        width: 300px;
+        float: right;
+        margin-left: 20px;
+      }
+      .main-content {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Ad-Filled Page</h1>
+      <div class="ad" style="height: 90px">
+        <!-- Top Banner Ad -->
+        <span>Top Banner Ad (728x90)</span>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="main-content">
+        <div class="sidebar">
+          <div class="ad" style="height: 250px">
+            <!-- Sidebar Ad 1 -->
+            <span>Sidebar Ad 1 (300x250)</span>
+          </div>
+          <div class="ad" style="height: 600px">
+            <!-- Sidebar Ad 2 -->
+            <span>Sidebar Ad 2 (300x600)</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <h2>Main Content Area</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+            odio. Praesent libero. Sed cursus ante dapibus diam.
+          </p>
+
+          <div class="ad" style="height: 250px">
+            <!-- In-content Ad -->
+            <span>In-content Ad (728x250)</span>
+          </div>
+
+          <p>
+            Suspendisse potenti. Morbi fringilla convallis sapien, id pulvinar
+            odio volutpat. Fusce sagittis, libero non molestie mollis, magna
+            orci ultrices dolor, at vulputate neque nulla lacinia eros.
+          </p>
+
+          <div class="ad" style="height: 90px">
+            <!-- Another Ad -->
+            <span>Another Ad (728x90)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="ad" style="height: 90px">
+        <!-- Footer Ad -->
+        <span>Footer Ad (728x90)</span>
+      </div>
+      <p>© 2025 Ad-Filled Page. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
