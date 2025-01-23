@@ -1,0 +1,18 @@
+{
+  "name": "ad-wall",
+  "version": "1.0.0",
+  "description": "Ad Wall - A sample project with advertisements",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"http-server ./src\" \"start http://localhost:8080\""
+  },
+  "keywords": [],
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3",
+    "concurrently": "^6.5.1",
+    "http-server": "^0.12.3"
+  }
+}
