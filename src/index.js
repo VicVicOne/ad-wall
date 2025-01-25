@@ -1,54 +1,95 @@
 window.onload = function () {
   const body = document.body;
-  body.style.display = "flex";
-  body.style.flexWrap = "wrap";
-  body.style.height = "100vh";
-  body.style.width = "100vw";
-  body.style.boxSizing = "border-box";
-  body.style.margin = "0";
-  body.style.padding = "0";
+  const maxHeight = window.innerHeight;
+  const maxWidth = window.innerWidth;
+  const minDivHeight = 50;
+  const maxDivHeight = 200;
+  const minDivWidth = 200;
+  const maxDivWidth = 500;
 
-  const createRandomDiv = () => {
+  const addRandomDiv = (xposition, yposition, height, width, index) => {
+    console.log(`INDEX ${index} Adding random div... `);
+
     const randomDiv = document.createElement("div");
-    const randomHeight = Math.floor(Math.random() * 200) + 50; // Random height between 50 and 250px
-    const randomWidth = Math.floor(Math.random() * 200) + 50; // Random width between 50 and 250px
+    let randomHeight = Math.floor(Math.random() * maxDivHeight) + minDivHeight;
+    randomHeight = randomHeight > height ? height : randomHeight;
+
+    let randomWidth = Math.floor(Math.random() * maxDivWidth) + minDivWidth;
+    randomWidth = randomWidth > width ? width : randomWidth;
+
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Random color
+    console.log(
+      `INDEX ${index}  Available space (Height: ${height} Width: ${width}) Starting position (xposition: ${xposition} yposition: ${yposition}) randomHeight: ${randomHeight} randomWidth: ${randomWidth}`
+    );
 
     randomDiv.style.height = `${randomHeight}px`;
     randomDiv.style.width = `${randomWidth}px`;
     randomDiv.style.backgroundColor = randomColor;
-    randomDiv.textContent = "Random Div";
+    randomDiv.style.position = "absolute"; // Position the div absolutely
+    randomDiv.style.left = `${xposition}px`; // Set the x position
+    randomDiv.style.top = `${yposition}px`; // Set the y position
 
-    return randomDiv;
+    const mainDiv = document.getElementById("main-div");
+
+    mainDiv.appendChild(randomDiv);
+
+    const nextxposition2 = xposition;
+    const nextyposition2 = yposition + randomHeight;
+    const nextheight2 = height - randomHeight;
+    const nextwidth2 = randomWidth;
+
+    console.log(
+      `INDEX ${index}  VERTICAL NEXT (xposition: ${nextxposition2} yposition: ${nextyposition2} )  (height: ${nextheight2}  width: ${nextwidth2})`
+    );
+
+    if (nextheight2 != 0) {
+      addRandomDiv(
+        nextxposition2,
+        nextyposition2,
+        nextheight2,
+        nextwidth2,
+        index + 1
+      );
+    } else {
+      console.log(`END RECURSION Index ${index}`);
+    }
+
+    const nextxposition = xposition + randomWidth;
+    const nextyposition = yposition;
+    const nextheight = height;
+    const nextwidth = width - randomWidth;
+
+    console.log(
+      `INDEX ${index}  HORIZONTAL Next xposition: ${nextxposition} Next yposition: ${nextyposition} Next height: ${nextheight} Next width: ${nextwidth}`
+    );
+
+    if (nextwidth != 0) {
+      addRandomDiv(
+        nextxposition,
+        nextyposition,
+        nextheight,
+        nextwidth,
+        index + 1
+      );
+    } else {
+      console.log(`END RECURSION Index ${index}`);
+    }
   };
 
   const fillPageWithRandomDivs = () => {
-    const viewportHeight = window.innerHeight;
-    const viewportWidth = window.innerWidth;
-    let totalHeight = 0;
-    let totalWidth = 0;
+    console.log("Filling page with random divs...");
+    console.log("Viewport height: ", maxHeight);
+    console.log("Viewport width: ", maxWidth);
 
-    while (totalHeight < viewportHeight || totalWidth < viewportWidth) {
-      const randomDiv = createRandomDiv();
-      body.appendChild(randomDiv);
-      totalHeight += randomDiv.offsetHeight;
-      totalWidth += randomDiv.offsetWidth;
-    }
+    const mainDiv = document.createElement("div");
 
-    // Fill remaining space
-    while (totalHeight < viewportHeight) {
-      const randomDiv = createRandomDiv();
-      randomDiv.style.width = `${viewportWidth}px`;
-      body.appendChild(randomDiv);
-      totalHeight += randomDiv.offsetHeight;
-    }
+    mainDiv.id = "main-div";
+    mainDiv.style.height = `${maxHeight}px`;
+    mainDiv.style.width = `${maxWidth}px`;
+    mainDiv.style.backgroundColor = "#4cd17e";
+    body.appendChild(mainDiv);
 
-    while (totalWidth < viewportWidth) {
-      const randomDiv = createRandomDiv();
-      randomDiv.style.height = `${viewportHeight}px`;
-      body.appendChild(randomDiv);
-      totalWidth += randomDiv.offsetWidth;
-    }
+    addRandomDiv(0, 0, maxHeight, maxWidth, 1);
   };
 
   fillPageWithRandomDivs();

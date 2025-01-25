@@ -5,14 +5,14 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"http-server ./src\" \"start http://localhost:8080\""
+    "start": "concurrently \"http-server ./src\" \"browser-sync start --proxy 'localhost:8080' --files 'src/**/*'\""
   },
   "keywords": [],
   "author": "Your Name",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^3.0.3",
-    "concurrently": "^6.5.1",
-    "http-server": "^0.12.3"
+    "concurrently": "^6.2.1",
+    "http-server": "^0.12.3",
+    "browser-sync": "^2.26.14"
   }
 }
