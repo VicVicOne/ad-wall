@@ -5,14 +5,18 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"http-server ./src\" \"browser-sync start --proxy 'localhost:8080' --files 'src/**/*'\""
+    "start": "concurrently \"http-server ./src\" \"browser-sync start --proxy 'localhost:8080' --files 'src/**/*'\"",
+    "deploy": "gh-pages -b gh-pages -d src"
   },
   "keywords": [],
   "author": "Your Name",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.26.14",
     "concurrently": "^6.2.1",
-    "http-server": "^0.12.3",
-    "browser-sync": "^2.26.14"
+    "http-server": "^0.12.3"
+  },
+  "dependencies": {
+    "gh-pages": "^6.3.0"
   }
 }

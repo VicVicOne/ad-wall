@@ -2,7 +2,7 @@ window.onload = function () {
   const body = document.body;
   const maxHeight = window.innerHeight;
   const maxWidth = window.innerWidth;
-  const minDivHeight = 50;
+  const minDivHeight = 100;
   const maxDivHeight = 200;
   const minDivWidth = 200;
   const maxDivWidth = 500;
@@ -28,6 +28,7 @@ window.onload = function () {
     randomDiv.style.position = "absolute"; // Position the div absolutely
     randomDiv.style.left = `${xposition}px`; // Set the x position
     randomDiv.style.top = `${yposition}px`; // Set the y position
+    randomDiv.textContent = ` ${randomWidth}x${randomHeight} Ad here`; // Append text to the div
 
     const mainDiv = document.getElementById("main-div");
 
