@@ -90,7 +90,7 @@ window.onload = function () {
     mainDiv.style.backgroundColor = "#4cd17e";
     body.appendChild(mainDiv);
 
-    //addRandomDiv(0, 0, maxHeight, maxWidth, 1);
+    addRandomDiv(0, 0, maxHeight, maxWidth, 1);
   };
 
   fillPageWithRandomDivs();
