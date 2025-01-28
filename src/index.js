@@ -28,7 +28,7 @@ window.onload = function () {
     randomDiv.style.position = "absolute"; // Position the div absolutely
     randomDiv.style.left = `${xposition}px`; // Set the x position
     randomDiv.style.top = `${yposition}px`; // Set the y position
-    randomDiv.textContent = ` ${randomWidth}x${randomHeight} Ad here`; // Append text to the div
+    randomDiv.textContent = `${randomWidth}x${randomHeight}`; // Append text to the div
 
     const mainDiv = document.getElementById("main-div");
 
@@ -90,7 +90,7 @@ window.onload = function () {
     mainDiv.style.backgroundColor = "#4cd17e";
     body.appendChild(mainDiv);
 
-    addRandomDiv(0, 0, maxHeight, maxWidth, 1);
+    //addRandomDiv(0, 0, maxHeight, maxWidth, 1);
   };
 
   fillPageWithRandomDivs();
