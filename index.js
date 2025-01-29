@@ -1,3 +1,42 @@
+const images = [
+  { path: "./ads/justeatVERT.png", ratio: 0.49 },
+  { path: "./ads/2.png", ratio: 0.5 },
+  { path: "./ads/3.png", ratio: 0.49 },
+  { path: "./ads/1.png", ratio: 1.2 },
+  { path: "./ads/6.png", ratio: 1.5 },
+  { path: "./ads/8.png", ratio: 2.25 },
+  { path: "./ads/5.png", ratio: 3.03 },
+  { path: "./ads/7.png", ratio: 4.2 },
+  { path: "./ads/4.png", ratio: 10.728 },
+  { path: "./ads/hyundHOR.png", ratio: 3.88 },
+];
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+let getRandomImage = (randomWidth, randomHeight) => {
+  const aspectRatio = randomWidth / randomHeight;
+
+  let imgArrays = shuffleArray(images);
+  let delta = 0.5;
+
+  for (let i = 0; i < images.length; i++) {
+    if (
+      images[i].ratio - delta <= aspectRatio &&
+      aspectRatio <= images[i].ratio + delta
+    ) {
+      return images[i].path;
+    }
+  }
+
+  return;
+};
+
 window.onload = function () {
   const body = document.body;
   const maxHeight = window.innerHeight;
@@ -13,9 +52,15 @@ window.onload = function () {
     const randomDiv = document.createElement("div");
     let randomHeight = Math.floor(Math.random() * maxDivHeight) + minDivHeight;
     randomHeight = randomHeight > height ? height : randomHeight;
+    randomHeight =
+      height - randomHeight < 75 && height - randomHeight > 0
+        ? height
+        : randomHeight;
 
     let randomWidth = Math.floor(Math.random() * maxDivWidth) + minDivWidth;
     randomWidth = randomWidth > width ? width : randomWidth;
+    randomWidth =
+      width - randomWidth < 75 && width - randomWidth > 0 ? width : randomWidth;
 
     const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Random color
     console.log(
@@ -28,7 +73,22 @@ window.onload = function () {
     randomDiv.style.position = "absolute"; // Position the div absolutely
     randomDiv.style.left = `${xposition}px`; // Set the x position
     randomDiv.style.top = `${yposition}px`; // Set the y position
-    randomDiv.textContent = `${randomWidth}x${randomHeight}`; // Append text to the div
+    randomDiv.style.cursor = "pointer"; // Set the cursor to pointer
+    randomDiv.classList.add("random-div");
+
+    //const ratio = randomWidth / randomHeight;
+    //randomDiv.textContent = `${ratio}`;
+
+    // Create an img element and set its src attribute
+    const img = document.createElement("img");
+    img.src = getRandomImage(randomWidth, randomHeight);
+
+    img.style.width = `${randomWidth}px`;
+    img.style.height = `${randomHeight}px`;
+    //img.style.objectFit = "cover"; // Ensure the image covers the entire div
+
+    // Append the img element to the randomDiv
+    randomDiv.appendChild(img);
 
     const mainDiv = document.getElementById("main-div");
 
@@ -87,7 +147,7 @@ window.onload = function () {
     mainDiv.id = "main-div";
     mainDiv.style.height = `${maxHeight}px`;
     mainDiv.style.width = `${maxWidth}px`;
-    mainDiv.style.backgroundColor = "#4cd17e";
+    mainDiv.style.backgroundColor = "#3d3d3d";
     body.appendChild(mainDiv);
 
     addRandomDiv(0, 0, maxHeight, maxWidth, 1);
