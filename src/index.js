@@ -2,13 +2,14 @@ const images = [
   { path: "./ads/justeatVERT.png", ratio: 0.49 },
   { path: "./ads/2.png", ratio: 0.5 },
   { path: "./ads/3.png", ratio: 0.49 },
+  { path: "./ads/9.png", ratio: 1 },
   { path: "./ads/1.png", ratio: 1.2 },
   { path: "./ads/6.png", ratio: 1.5 },
   { path: "./ads/8.png", ratio: 2.25 },
   { path: "./ads/5.png", ratio: 3.03 },
+  { path: "./ads/hyundHOR.png", ratio: 3.88 },
   { path: "./ads/7.png", ratio: 4.2 },
   { path: "./ads/4.png", ratio: 10.728 },
-  { path: "./ads/hyundHOR.png", ratio: 3.88 },
 ];
 
 const shuffleArray = (array) => {

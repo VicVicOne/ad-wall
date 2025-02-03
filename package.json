@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"http-server ./src\" \"browser-sync start --proxy 'localhost:8080' --files 'src/**/*'\"",
+    "start": "concurrently \"http-server ./src\" \"start http://localhost:8080\"",
     "deploy": "gh-pages -b gh-pages -d src"
   },
   "keywords": [],
