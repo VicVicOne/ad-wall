@@ -70,25 +70,21 @@ window.onload = function () {
 
     randomDiv.style.height = `${randomHeight}px`;
     randomDiv.style.width = `${randomWidth}px`;
-    randomDiv.style.backgroundColor = randomColor;
+    // randomDiv.style.backgroundColor = randomColor;
     randomDiv.style.position = "absolute"; // Position the div absolutely
     randomDiv.style.left = `${xposition}px`; // Set the x position
     randomDiv.style.top = `${yposition}px`; // Set the y position
     randomDiv.style.cursor = "pointer"; // Set the cursor to pointer
     randomDiv.classList.add("random-div");
 
-    //const ratio = randomWidth / randomHeight;
-    //randomDiv.textContent = `${ratio}`;
-
     // Create an img element and set its src attribute
     const img = document.createElement("img");
     img.src = getRandomImage(randomWidth, randomHeight);
 
-    img.style.width = `${randomWidth}px`;
-    img.style.height = `${randomHeight}px`;
-    //img.style.objectFit = "cover"; // Ensure the image covers the entire div
+    img.style.width = `${randomWidth - 0}px`;
+    img.style.height = `${randomHeight - 0}px`;
+    // img.style.objectFit = "contain";
 
-    // Append the img element to the randomDiv
     randomDiv.appendChild(img);
 
     const mainDiv = document.getElementById("main-div");
