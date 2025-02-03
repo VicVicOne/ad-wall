@@ -1,4 +1,4 @@
-#**Ad-Wall**
+#**Ad-Wall**#
 
 Ad-Wall is a simple math challenge where the goal is to fill the entire page with randomly sized squares. It started as an experiment with AI assistance, evolving into a fun spatial puzzle.
 
